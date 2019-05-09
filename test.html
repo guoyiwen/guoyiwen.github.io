@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="./angular.min.js"></script>
+    <title></title>
+    <script src="./fakeforecasts.js"></script>
+    <script src="./app.js" async></script>
+    <script language="JavaScript">
+        angular.module('app', [])
+        .directive('stkSignColor', function () {
+                return {
+                    restrict: 'A',
+                    link: function ($scope, $element, $attrs) {
+                        $attrs.$observe('stkSignColor', function (newVal) {
+                            var newSign = parseFloat(newVal);
+                            if (newSign > 0) {
+                                $element[0].style.color = 'Green';
+                            } else {
+                                $element[0].style.color = 'Red';
+                            }
+                        });
+                    }
+                };
+            });
+
+
+      
+    </script>
+</head>
+
+<body ng-app="app">
+    <div  stk-sign-color="0">99999999999</div>
+
+
+
+</body>
+
+</html>
